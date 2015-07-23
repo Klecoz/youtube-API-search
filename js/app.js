@@ -7,12 +7,12 @@ $(document).ready(function(){
     key: 'AIzaSyAFRBimlEH1PZiHUHVc40VOQMm9J8XqHD0',
     part: 'snippet',
     type: 'video',
-    q: 'eggs'
+    q: 'eggs' //Search request.
   };
   url = 'https://www.googleapis.com/youtube/v3/search';
 
   $.getJSON(url, params, function(data){
-    //showResults(data);
+    //Gets the url and ID from the search request.
     url = data.items[0].snippet.thumbnails.medium.url;
     ID = data.items[0].id.videoId;
     $('#search-results').append("<a href='https://www.youtube.com/watch?v=" + ID + "'>" + "<img src='" + url + "'>" + "</a>");
