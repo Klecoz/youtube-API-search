@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 //JSON request to Youtube
   var url;
+  var ID;
   var params = {
     key: 'AIzaSyAFRBimlEH1PZiHUHVc40VOQMm9J8XqHD0',
     part: 'snippet',
@@ -13,8 +14,8 @@ $(document).ready(function(){
   $.getJSON(url, params, function(data){
     //showResults(data);
     url = data.items[0].snippet.thumbnails.medium.url;
-    console.log(url);
-    $('#search-results').append("<img src='" + url + "'>");
+    ID = data.items[0].id.videoId;
+    $('#search-results').append("<a href='https://www.youtube.com/watch?v=" + ID + "'>" + "<img src='" + url + "'>" + "</a>");
   });
 
 
