@@ -1,19 +1,29 @@
 $(document).ready(function(){
 
-//JSON request to OMDB
-function getRequest(searchTerm){
+//JSON request to Youtube
+  var url;
   var params = {
-    s: searchTerm,
-    r: 'json'
+    key: 'AIzaSyAFRBimlEH1PZiHUHVc40VOQMm9J8XqHD0',
+    part: 'snippet',
+    type: 'video',
+    q: 'eggs'
   };
-  url = 'http://www.omdbapi.com';
+  url = 'https://www.googleapis.com/youtube/v3/search';
 
   $.getJSON(url, params, function(data){
-    showResults(data.Search);
+    //showResults(data);
+    url = data.items[0].snippet.thumbnails.medium.url;
+    console.log(url);
+    $('#search-results').append("<img src='" + url + "'>");
   });
-}
 
-function showResults(results){
+
+
+
+
+
+
+/*function showResults(results){
   var html = "";
   $.each(results, function(index,value){
     html += '<p>' + value.Title + '</p>';
@@ -32,4 +42,6 @@ $(function(){
 });
 
 
+*/
 });
+
