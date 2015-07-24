@@ -10,7 +10,8 @@ $(document).ready(function(){
     key: 'AIzaSyAFRBimlEH1PZiHUHVc40VOQMm9J8XqHD0',
     part: 'snippet',
     type: 'video',
-    q: ''
+    q: '',
+    maxResults: 6
   };
 
 function getData() {
