@@ -14,57 +14,32 @@ $(document).ready(function(){
     maxResults: 6
   };
 
-function getData() {
-  $.getJSON(url, params, function(data){
-    console.log(data);
-    videos = data.items.length;
+  function getData() {
+    $.getJSON(url, params, function(data){
+      console.log(data);
+      videos = data.items.length;
 
     //Gets the url and ID from the search request and prints each in #search-results.
     for (var i = 0; i <= videos; i++) {
-    thumbnailUrl = data.items[i].snippet.thumbnails.medium.url;
-    ID = data.items[i].id.videoId;
-    $('#search-results').append("<a href='https://www.youtube.com/watch?v=" + ID + "'>" + "<img src='" + thumbnailUrl + "'>" + "</a>");
+      thumbnailUrl = data.items[i].snippet.thumbnails.medium.url;
+      ID = data.items[i].id.videoId;
+      $('#search-results').append("<a href='https://www.youtube.com/watch?v=" + ID + "'>" + "<img src='" + thumbnailUrl + "'>" + "</a>");
     }
   });
 
-}
+  }
 
+//When submit button is clicked, make the q object equal to the user input and call the JSON Data.
 
-
-$('#button').on('click', function(event) {
-  event.preventDefault();
-  params.q = $('#query').val();
-  $('#search-results').empty();
-  getData();
-
-
-
-
-
-
-});
-
-
-
-/*function showResults(results){
-  var html = "";
-  $.each(results, function(index,value){
-    html += '<p>' + value.Title + '</p>';
-    console.log(value.Title);
-  });
-  $('#search-results').html(html);
-}
-
-
-$(function(){
-  $('#search-term').submit(function(event){
+  $('#button').on('click', function(event) {
     event.preventDefault();
-    var searchTerm = $('#query').val();
-    getRequest(searchTerm);
+    params.q = $('#query').val();
+    $('#search-results').empty();
+    getData();
+
   });
-});
 
 
-*/
+
 });
 
